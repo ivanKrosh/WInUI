@@ -26,15 +26,15 @@
                        Margin="28,0,0,0"/>
         </Grid>
         <NavigationView
+            IsPaneOpen="False"
             x:Name="NavigationViewControl"
             Canvas.ZIndex="0"
-            IsBackButtonVisible="Visible"
+            IsBackButtonVisible="Collapsed"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             IsSettingsVisible="False"
             ExpandedModeThresholdWidth="1280"
-            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+            DisplayModeChanged="NavigationViewControl_DisplayModeChanged">
             <NavigationView.MenuItems>
                 <!--
                 TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
@@ -54,7 +54,7 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-            <NavigationView.HeaderTemplate>
+            <!--<NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
                         <TextBlock
@@ -76,9 +76,85 @@
                         </DataTemplate>
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
-            </i:Interaction.Behaviors>
-            <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
-                <Frame x:Name="NavigationFrame" />
+            </i:Interaction.Behaviors>-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="0.65*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.6*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="2" VerticalAlignment="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image Margin="2" Source="/Assets/Logo.png"
+                            HorizontalAlignment="Left"
+                            Height="60" />
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="auto" Grid.Column="1" Orientation="Horizontal">
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/SatelliteOnline.png"/>
+                            </Button>
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/DeviceOnline.png"/>
+                            </Button>
+                            <TextBlock VerticalAlignment="Bottom" Margin="0 0 5 0" Text="09.11.2023"/>
+                            <TextBlock VerticalAlignment="Bottom" Text="16:32:41"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="auto" Grid.Column="2" Orientation="Horizontal">
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/TrackerStart.png"/>
+                            </Button>
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/SunCoution.png"/>
+                            </Button>
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/SoundCoution.png"/>
+                            </Button>
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/Hand.png"/>
+                            </Button>
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/Calendar.png"/>
+                            </Button>
+                            <Button Height="40" Margin="0 0 5 0" Padding="0">
+                                <Image Source="/Assets/PushSimplePush.png"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Rectangle Margin="2" Grid.Row="1" Fill="Gray"/>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Margin="2" Grid.RowSpan="2" Fill="Gray"/>
+                        <Rectangle Margin="2" Grid.Column="1" Fill="Gray"/>
+                        <Rectangle Margin="2" Grid.Row="1" Grid.Column="1" Fill="Gray"/>
+                        <Rectangle Margin="2" Grid.Row="0" Grid.Column="2" Fill="Gray"/>
+                        <Rectangle Margin="2" Grid.Row="1" Grid.Column="2" Fill="Gray"/>
+                        <Rectangle Margin="2" Grid.Row="0" Grid.Column="3" Fill="Gray"/>
+                        <Rectangle Margin="2" Grid.Row="1" Grid.Column="3" Fill="Gray"/>
+                    </Grid>
+                </Grid>
+                
+                <Frame Margin="2" Grid.Column="1" x:Name="NavigationFrame" />
             </Grid>
         </NavigationView>
     </Grid>

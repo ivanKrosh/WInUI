@@ -14,6 +14,17 @@
 	<UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Assets\Calendar.png" />
+    <None Remove="Assets\DeviceOnline.png" />
+    <None Remove="Assets\Hand.png" />
+    <None Remove="Assets\Logo.png" />
+    <None Remove="Assets\PushSimplePush.png" />
+    <None Remove="Assets\SatelliteOnline.png" />
+    <None Remove="Assets\SoundCoution.png" />
+    <None Remove="Assets\SunCoution.png" />
+    <None Remove="Assets\TrackerStart.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
